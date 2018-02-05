@@ -1,0 +1,197 @@
+<!DOCTYPE html><html>
+<head>
+  <title>Cálculadora JQuery</title>
+  <meta charset="UTF-8">
+    
+    <style type="text/css">
+        
+        body {
+            background-color:beige;
+        }
+        
+        #marco {
+            background-color:blanchedalmond;
+            
+            padding: 0.5em;
+            margin: 20px;
+            width: 260px; 
+            border-style: groove;
+            border-width: 10px;
+        }
+        
+        #calculadora {
+            background-color:burlywood;
+            box-shadow: 2px 7px 5px gray;
+            padding: 0.5em;
+            margin: 20px;
+            width: 200px;
+        }
+    
+    </style>
+    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>
+    
+
+    
+    <script type="text/javascript">
+        
+        $(function() { 
+            var acc=0, op="";
+            
+        $("#n1").on("click", function(){ $("#n1").val("");} );
+
+        $("#cuadrado").on("click", function() { 
+            var num = $("#n1");
+            num.val(num.val() * num.val());
+            }
+            );
+        
+        
+        $("#inverso").on("click", function() { 
+            var num = $("#n1");
+            num.val(1 / num.val());
+            }
+            );
+            
+        $("#raiz").on("click", function() { 
+            var num = $("#n1");
+            num.val(Math.sqrt(num.val()));
+            }
+            );
+        
+         
+        $("#entera").on("click", function() { 
+            var num = $("#n1");
+            if ( +num.value < 0) {
+                num.val(Math.ceil(num.val()));
+            }
+            else {
+                num.val(Math.floor(num.val()));
+            }
+            }
+            );
+            
+            
+        $("#potbin").on("click", function() { 
+            var num = $("#n1");
+            num.val(Math.pow(2,+num.val()));
+            }
+            );
+        
+        $("#factorial").on("click", function() { 
+            var num = $("#n1");
+            var n=0;
+            var acu=1;
+            n=num.val();
+            while (n !== 0) {
+                acu=acu*n;
+                n=n-1;
+            }
+            num.val(acu);
+            }
+            );
+            
+        $("#sumatorio").on("click", function() { 
+            var num = $("#n1");
+            var lista = num.val().split(",");
+            for (var i=0, acc=0; i<lista.length; i++) acc += +lista[i];
+            num.val(acc);
+            }
+            );
+            
+            
+        $("#productorio").on("click", function() { 
+            var num = $("#n1");
+            var lista = num.val().split(",");
+            for (var i=0, acc=1; i<lista.length; i++) acc *= +lista[i];
+            num.val(acc);
+            }
+            );
+            
+            
+        $("#suma").on("click", function() { 
+            var num = $("#n1");
+            op = "+";
+            acc = num.val();
+            }
+            );
+            
+        $("#menos").on("click", function() { 
+            var num = $("#n1");
+            op = "-";
+            acc = num.val();
+            }
+            );
+            
+        $("#producto").on("click", function() { 
+            var num = $("#n1");
+            op = "*";
+            acc = num.val();
+            }
+            );
+            
+        $("#division").on("click", function() { 
+            var num = $("#n1");
+            op = "/";
+            acc = num.val();
+            }
+            );
+            
+        $("#potencia").on("click", function() { 
+            var num = $("#n1");
+            op = "pot";
+            acc = num.val();
+            }
+            );
+            
+            
+         $("#calcular").on("click", function() { 
+            var num = $("#n1");
+            if (op === "+") {num.val(+acc + +num.val());}
+            if (op === "-") {num.val(+acc - +num.val());}
+            if (op === "*") {num.val(+acc * +num.val());}
+            if (op === "/") {num.val(+acc / +num.val());}
+            if (op === "pot") {num.val(Math.pow(+acc,+num.val()));}
+            }
+            );
+            
+        
+         });
+        
+  
+
+       
+  
+    </script>
+</head>
+<body>
+  <h2>Buenos días, bienvenido a la cálculadora de Juan Miguel Núñez</h2>
+  <p>
+<div id="marco">
+  <div id="calculadora">
+    <p>
+    <input type="text" id="n1">
+      <p>
+    <button id="cuadrado">x<sup>2</sup></button>
+    <button id="inverso">1/x</button>
+    <button id="raiz">raiz</button>
+    <button id="entera">entera</button>
+     <p>
+    <button id="suma">+</button>
+    <button id="menos">-</button>
+    <button id="producto">*</button>
+    <button id="division">/</button>
+    <button id="potencia">x<sup>y</sup></button>
+    <button id="potbin">2<sup>n</sup></button>
+    <p>
+    <button id="factorial">n!</button>
+    <button id="sumatorio">Σ x</button>
+    <button id="productorio">* x</button>
+    <p>
+    <button id="calcular">calcular</button>
+    <p>
+  </div>
+</div>
+
+</body>
+</html>
